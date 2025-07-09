@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input, button {
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-width: 595px;
+}
+
+.sticker {
+  width: 100px;
+  height: 100px;
+  border: 1px dashed #888;
+  margin: 5px;
+  font-size: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticker img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.caption {
+  margin-top: 4px;
+}

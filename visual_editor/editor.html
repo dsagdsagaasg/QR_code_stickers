@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Naklejki – Generator PDF</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <h1>QR Naklejki – Generator PDF</h1>
+
+  <label for="customText">Podpis pod QR-kodami:</label>
+  <input type="text" id="customText" placeholder="np. Klasa 4TI, Szkoła XYZ" />
+
+  <input type="file" multiple accept="image/*" id="qrInput" />
+  <button id="downloadPDF">Eksportuj PDF</button>
+
+  <div class="preview" id="preview"></div>
+
+  <script>
+    const qrInput = document.getElementById("qrInput");
+    const preview = document.getElementById("preview");
+    const downloadBtn = document.getElementById("downloadPDF");
+    const customTextInput = document.getElementById("customText");
+
+    let currentImages = [];
+
+    qrInput.addEventListener("change", (event) => {
+      preview.innerHTML = "";
+      currentImages = Array.from(event.target.files);
+      const podpis = customTextInput.value.trim() || " ";
+
+      currentImages.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const div = document.createElement("div");
+          div.className = "sticker";
+          div.innerHTML = `
+            <img src="${e.target.result}" alt="QR">
+            <div class="caption">${podpis}</div>
+          `;
+          preview.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    downloadBtn.addEventListener("click", () => {
+      if (!currentImages.length) {
+        alert("Najpierw dodaj pliki z QR-kodami.");
+        return;
+      }
+
+      const opt = {
+        margin: 10,
+        filename: 'naklejki.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      html2pdf().from(preview).set(opt).save();
+    });
+  </script>
+</body>
+</html>
