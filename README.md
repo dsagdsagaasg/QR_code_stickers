@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Projekt generatora arkusza naklejek
 	A) Wersja skryptu w node.js
 		1) trzeba umieścić kod qr w folderze kody_qr/
@@ -10,6 +10,3 @@ Projekt generatora arkusza naklejek
 		3) edytor zapewnia podgląd tego jak arkusz będzie wyglądać
 		4) arkusz można pozyskać poprzez kliknięcie przycisku Eksportuj PDF co spowoduje automatyczne pobranie 
 		   arkusza naklejek
-=======
-# QR_code_stickers
->>>>>>> 57744b3f7a624789f3b96aa445b585b2cd90be28
