@@ -1,4 +1,3 @@
-
 Projekt generatora arkusza naklejek
 A) Wersja skryptu w node.js
 1) trzeba umieścić kod qr w folderze kody_qr/
